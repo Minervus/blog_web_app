@@ -8,19 +8,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static("public")); 
 
+
+
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 })
-
-app.get("/", (req,res) => {
-    res.render("index.ejs"); 
-})
-
-app.get("/post", (req, res) => {
-    res.render("post.ejs");
-  })
-
-app.use(addPost);
 
 // Array to store posts as objects
 let posts = []; 
@@ -33,7 +25,38 @@ function Post(title, subheading, content) {
 }
 
 // Add post function to be triggered on submit
-function addPost(title, subheading, content) {
-    const newPost = new Post(title, subheading, content);
+function addPost(req, res, next) {
+    const newPost = new Post(req.body.title, req.body.subheading, req.body.content);
     posts.push(newPost);
+    console.log(`Posts array ${posts}`); 
+    next();
+    res.render("index.ejs");
 }
+
+app.get("/", (req,res) => {
+    res.render("index.ejs", 
+        { 
+         posts: posts
+        }
+    )
+    console.log(`Current posts ${posts}`); 
+})
+
+app.get("/post", (req,res) => {
+    res.render("post.ejs");
+    
+})
+
+app.post("/submit", (req, res) => {
+    const newPost = new Post(req.body.title, req.body.subheading, req.body.content);
+    posts.push(newPost);
+    res.render("index.ejs",
+        {
+            postTitle: newPost.title,
+            posts: posts
+        }
+    )
+  })
+
+
+

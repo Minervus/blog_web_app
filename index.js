@@ -33,6 +33,15 @@ function addPost(req, res, next) {
     res.render("index.ejs");
 }
 
+// Update post on edit screen
+function updatePost(req, res, next) {
+    post[i].title = req.body.title
+    post[i].subheading = req.body.subheading
+    post[i].content = req.body.content
+    next();
+    res.render("index.ejs");
+}
+
 app.get("/", (req,res) => {
     res.render("index.ejs", 
         { 
@@ -59,18 +68,23 @@ app.post("/submit", (req, res) => {
   })
 
   app.get("/edit", (req,res) => {
-    const title = req.body.title; 
-    const subheading = req.body.subheading;
-    const content = req.body.subheading;
-    console.log(`title: ${title}, subheading: ${subheading}, content: ${content}`)
+    console.log(posts);
     res.render("edit.ejs", 
         {
-            title: title,
-            subheading: subheading,
-            content: content
+            posts: posts
         }
     )
   })
 
+  app.post("/edit", (req,res) => {
+    post[i].title = req.body.title
+    post[i].subheading = req.body.subheading
+    post[i].content = req.body.content
+    res.render("index.ejs",
+        {
+            posts: posts
+        }
+    )
+  })
 
 

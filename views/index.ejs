@@ -1,8 +1,9 @@
 <h1>Welcome to the blog</h1>
 <a href="/post">Add new post</a>
+<a href="/edit">Edit posts</a>
 
 <body>
-    <% if (locals.postTitle) { %>        
+    <% if (locals.posts.lenth < 0 || locals.posts.length == undefined) { %>        
         <ul>
             <% console.log(posts) %>
             <% for(let i=0; i<locals.posts.length; i++) { %> 
@@ -10,10 +11,11 @@
                     <h2 name="title"><%= posts[i].title %></h2>
                     <h3 name="subheading"><%= posts[i].subheading %></h3>
                     <p name="content"><%= posts[i].content %></p>
-                    <a href="/edit">EDIT ME</a>
+                    
                     <button>Delete</button>
                 </li>
             <% } %>
+
         </ul>
     <% } else { %>
         <h2>No posts yet</h2>

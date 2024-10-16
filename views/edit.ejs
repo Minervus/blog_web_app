@@ -1,0 +1,10 @@
+<h2>Edit blog</h2>
+<form action="/submit" method="POST">
+    <label for="title">Blog Title</label><br>
+    <input type="text" name="title" label="Blog Title" value="<%= title %>"><br>
+    <label for="subheading">Subheading</label><br>
+    <input type="text" name="subheading" label="Subheading" value="<%= subheading %>" ><br>
+    <label for="Contents">Contents</label><br>
+    <input type="text" name="content" label="Contents" value="<%= content %>">
+    <input type="submit" value="SUBMIT">
+</form>

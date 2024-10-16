@@ -58,5 +58,19 @@ app.post("/submit", (req, res) => {
     )
   })
 
+  app.get("/edit", (req,res) => {
+    const title = req.body.title; 
+    const subheading = req.body.subheading;
+    const content = req.body.subheading;
+    console.log(`title: ${title}, subheading: ${subheading}, content: ${content}`)
+    res.render("edit.ejs", 
+        {
+            title: title,
+            subheading: subheading,
+            content: content
+        }
+    )
+  })
+
 
 

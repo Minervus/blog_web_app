@@ -8,8 +8,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static("public")); 
 
-
-
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 })
@@ -25,24 +23,7 @@ function Post(id, title, subheading, content) {
     this.content = content;
 }
 
-// Add post function to be triggered on submit
-function addPost(req, res, next) {
-    const newPost = new Post(req.body.title, req.body.subheading, req.body.content);
-    posts.push(newPost);
-    console.log(`Posts array ${posts}`); 
-    next();
-    res.render("index.ejs");
-}
-
-// Update post on edit screen
-function updatePost(req, res, next) {
-    post[i].title = req.body.title
-    post[i].subheading = req.body.subheading
-    post[i].content = req.body.content
-    next();
-    res.render("index.ejs");
-}
-
+// Get to present the homepage and show blogs if any exist
 app.get("/", (req,res) => {
     res.render("index.ejs", 
         { 
@@ -57,6 +38,7 @@ app.get("/post", (req,res) => {
     
 })
 
+// Post to create a new blog
 app.post("/submit", (req, res) => {
     const newPost = new Post(req.body.id, req.body.title, req.body.subheading, req.body.content);
     posts.push(newPost);
@@ -68,6 +50,7 @@ app.post("/submit", (req, res) => {
     )
   })
 
+  // Get the edit page
   app.get("/edit", (req,res) => {
     console.log(posts);
     res.render("edit.ejs", 
@@ -77,8 +60,8 @@ app.post("/submit", (req, res) => {
     )
   })
 
+  // Post to update blog based on ID 
   app.post("/edit", (req,res) => {
-    //const postToEdit = posts.find(posts.id === req.body.id)
     let postToEdit = {};
 
     for (let i=0; i < posts.length; i++) {
@@ -98,10 +81,10 @@ app.post("/submit", (req, res) => {
     )
   })
 
+  //Delete function that deletes object based on ID
   app.post("/delete", (req,res) => {
     const targetId = req.body.id;
     const index = posts.findIndex(element => element.id === targetId);
-
 
     posts.splice(index,1); 
 

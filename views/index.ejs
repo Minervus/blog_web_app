@@ -7,9 +7,7 @@
         <ul>
             <% console.log(posts) %>
             <% for(let i=0; i<locals.posts.length; i++) { %> 
-                <li>
-                    
-                    
+                <li>            
                     <form action="/delete" method="POST">
                         <h4 name="id"><%= posts[i].id %></h4>
                         <h2 name="title"><%= posts[i].title %></h2>
@@ -20,7 +18,6 @@
                     </form>
                 </li>
             <% } %>
-
         </ul>
     <% } else { %>
         <% console.log(posts.length) %>

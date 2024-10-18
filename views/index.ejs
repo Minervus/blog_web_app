@@ -1,21 +1,25 @@
 <h1>Welcome to the blog</h1>
 <a href="/post">Add new post</a>
+<a href="/edit">Edit posts</a>
 
 <body>
-    <% if (locals.postTitle) { %>        
+    <% if (locals.posts.length > 0) { %>        
         <ul>
             <% console.log(posts) %>
             <% for(let i=0; i<locals.posts.length; i++) { %> 
                 <li>
+                    <h4 name="id"><%= posts[i].id %></h4>
                     <h2 name="title"><%= posts[i].title %></h2>
                     <h3 name="subheading"><%= posts[i].subheading %></h3>
                     <p name="content"><%= posts[i].content %></p>
-                    <a href="/edit">EDIT ME</a>
+                    
                     <button>Delete</button>
                 </li>
             <% } %>
+
         </ul>
     <% } else { %>
+        <% console.log(posts.length) %>
         <h2>No posts yet</h2>
     <% } %>
 

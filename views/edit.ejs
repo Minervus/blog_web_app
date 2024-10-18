@@ -1,10 +1,27 @@
 <h2>Edit blog</h2>
-<form action="/submit" method="POST">
-    <label for="title">Blog Title</label><br>
-    <input type="text" name="title" label="Blog Title" value="<%= title %>"><br>
-    <label for="subheading">Subheading</label><br>
-    <input type="text" name="subheading" label="Subheading" value="<%= subheading %>" ><br>
-    <label for="Contents">Contents</label><br>
-    <input type="text" name="content" label="Contents" value="<%= content %>">
-    <input type="submit" value="SUBMIT">
-</form>
+<body>
+    <% if (locals.posts.length > 0) { %>        
+        <ul>
+            <% console.log(posts) %>
+            <% for(let i=0; i<locals.posts.length; i++) { %> 
+                <li>
+                    <form action="/edit" method="POST">
+                        <input type="text" name="id" value="<%= posts[i].id %>">
+                        <h2>Title</h2>
+                        <input type="text" name="title" value="<%= posts[i].title %>">
+                        <h3>Subheading</h3>
+                        <input type="text" name="subheading" value="<%= posts[i].subheading %>">
+                        <h3>Content</h3>
+                        <input type="text" name="content" value="<%= posts[i].content %>">
+                        <input type="submit" name="UPDATE">
+                    </form>
+                </li>
+    
+            <% } %>
+    
+        </ul>
+    <% } else { %>
+        <h2>No posts yet</h2>
+    <% } %>
+    </form>
+</body>

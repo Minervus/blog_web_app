@@ -16,7 +16,6 @@ i {
     background-color: #3586ff;
 }
 
-
 .navbar-logo {
   padding: 15px;
   color: #fff;
@@ -136,6 +135,10 @@ i {
     -ms-flex-preferred-size: auto;
     flex-basis: auto;
   }
+  .col-md-6 {
+    flex: 0 0 auto;
+    width: 50%;
+}
 }
 
 @media (max-width: 991px) {
@@ -300,6 +303,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: stretch;
+  text-align: left;
 }
 
 header,

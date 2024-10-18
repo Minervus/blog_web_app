@@ -8,12 +8,16 @@
             <% console.log(posts) %>
             <% for(let i=0; i<locals.posts.length; i++) { %> 
                 <li>
-                    <h4 name="id"><%= posts[i].id %></h4>
-                    <h2 name="title"><%= posts[i].title %></h2>
-                    <h3 name="subheading"><%= posts[i].subheading %></h3>
-                    <p name="content"><%= posts[i].content %></p>
                     
-                    <button>Delete</button>
+                    
+                    <form action="/delete" method="POST">
+                        <h4 name="id"><%= posts[i].id %></h4>
+                        <h2 name="title"><%= posts[i].title %></h2>
+                        <h3 name="subheading"><%= posts[i].subheading %></h3>
+                        <p name="content"><%= posts[i].content %></p>
+                        <button name="delete" value="delete">Delete</button>
+
+                    </form>
                 </li>
             <% } %>
 

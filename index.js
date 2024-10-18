@@ -89,12 +89,8 @@ app.post("/submit", (req, res) => {
             postToEdit.content = req.body.content
         } else {
             console.log("BLOG NOT UPDATED");
-        }
-        
+        }      
     }
-
-    
-
     res.render("index.ejs",
         {
             posts: posts
@@ -102,4 +98,16 @@ app.post("/submit", (req, res) => {
     )
   })
 
+  app.post("/delete", (req,res) => {
+    const targetId = req.body.id;
+    const index = posts.findIndex(element => element.id === targetId);
+
+
+    posts.splice(index,1); 
+
+    res.render("index.ejs", {
+        posts: posts
+    })
+
+  })
 

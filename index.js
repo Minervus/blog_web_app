@@ -18,7 +18,8 @@ app.listen(port, () => {
 let posts = []; 
 
 // Post creator function
-function Post(title, subheading, content) {
+function Post(id, title, subheading, content) {
+    this.id = id;
     this.title = title;
     this.subheading = subheading;
     this.content = content;
@@ -57,7 +58,7 @@ app.get("/post", (req,res) => {
 })
 
 app.post("/submit", (req, res) => {
-    const newPost = new Post(req.body.title, req.body.subheading, req.body.content);
+    const newPost = new Post(req.body.id, req.body.title, req.body.subheading, req.body.content);
     posts.push(newPost);
     res.render("index.ejs",
         {
@@ -77,9 +78,23 @@ app.post("/submit", (req, res) => {
   })
 
   app.post("/edit", (req,res) => {
-    post[i].title = req.body.title
-    post[i].subheading = req.body.subheading
-    post[i].content = req.body.content
+    //const postToEdit = posts.find(posts.id === req.body.id)
+    let postToEdit = {};
+
+    for (let i=0; i < posts.length; i++) {
+        if(posts[i].id === req.body.id){
+            postToEdit = posts[i]; 
+            postToEdit.title = req.body.title
+            postToEdit.subheading = req.body.subheading
+            postToEdit.content = req.body.content
+        } else {
+            console.log("BLOG NOT UPDATED");
+        }
+        
+    }
+
+    
+
     res.render("index.ejs",
         {
             posts: posts

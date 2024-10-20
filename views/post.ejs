@@ -1,20 +1,38 @@
 <%- include("partials/header.ejs") %>
 
-<div>
-    <h2>Add a new blog</h2>
-    <body>
-        <form action="/submit" method="POST">
-            <label for="id">ID</label><br>
-            <input type="text" name="id" label="Unique ID"><br>
-            <label for="title">Blog Title</label><br>
-            <input type="text" name="title" label="Blog Title"><br>
-            <label for="subheading">Subheading</label><br>
-            <input type="text" name="subheading" label="Subheading"><br>
-            <label for="Contents">Contents</label><br>
-            <input type="text" name="content" label="Contents">
-            <input type="submit" value="SUBMIT">
-        </form>
-    </body>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-8 order-md-1">
+                <h2>Add a new blog</h2>
+    
+                <form action="/submit" method="POST">
+                    <label for="id">ID</label><br>
+                    <input type="text" name="id" label="Unique ID"><br>
+                    <label for="title">Blog Title</label><br>
+                    <input type="text" name="title" label="Blog Title"><br>
+                    <label for="subheading">Subheading</label><br>
+                    <input type="text" name="subheading" label="Subheading"><br>
+                    <label for="Contents">Contents</label><br>
+                    <div>
+                        <textarea type="text" name="content" label="Contents"></textarea>
+                    </div>
+                    
+                    <input type="submit" value="SUBMIT">
+                </form>
 
-</div>
+            </div>
+            <div class="col-md-4 order-md-2 mb-4">
+
+            </div>
+
+    
+        
+        </div>
+    
+    </main>
+    
+</body>
+
+
 

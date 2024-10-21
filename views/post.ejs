@@ -1,11 +1,10 @@
 <%- include("partials/header.ejs") %>
 
 <body>
-    <main class="container">
+    <main class="container-fluid">
         <div class="row">
-            <div class="col-md-8 order-md-1">
+            <div>
                 <h2>Add a new blog</h2>
-    
                 <form action="/submit" method="POST">
                     <label for="id">ID</label><br>
                     <input type="text" name="id" label="Unique ID"><br>
@@ -17,13 +16,14 @@
                     <div>
                         <textarea type="text" name="content" label="Contents"></textarea>
                     </div>
+                    <p>I'm writing a lot of text here to test the width of the box to make sure its not the forms</p>
                     
                     <input type="submit" value="SUBMIT">
                 </form>
 
             </div>
             <div class="col-md-4 order-md-2 mb-4">
-
+                
             </div>
 
     

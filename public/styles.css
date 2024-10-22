@@ -174,7 +174,7 @@ i {
 }
 
 footer {
-  position: relative;
+  position: fixed;
   width: 100%;
   background: #3586ff;
   min-height: 100px;
@@ -184,6 +184,7 @@ footer {
   justify-content: center;
   align-items: center;
   color: white;
+  bottom: 0px;
 }
 
 footer .social_icon,
